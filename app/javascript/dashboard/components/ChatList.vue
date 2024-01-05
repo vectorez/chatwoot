@@ -368,15 +368,25 @@ export default {
         unassigned: 'unAssignedCount',
         all: 'allCount',
       };
+
+      const userRoles = this.currentUser.role;
+      console.log("userRoles",userRoles)
+      
       return Object.keys(ASSIGNEE_TYPE_TAB_KEYS).map(key => {
-        const count = this.conversationStats[ASSIGNEE_TYPE_TAB_KEYS[key]] || 0;
-        return {
-          key,
-          name: this.$t(`CHAT_LIST.ASSIGNEE_TYPE_TABS.${key}`),
-          count,
-        };
-      });
-    },
+    // Exclude 'allCount' if userRoles includes 'agent'
+    if (userRoles.includes('agent') && key === 'all') {
+      return null; // Skip this iteration
+    }
+
+    const count = this.conversationStats[ASSIGNEE_TYPE_TAB_KEYS[key]] || 0;
+    return {
+      key,
+      name: this.$t(`CHAT_LIST.ASSIGNEE_TYPE_TABS.${key}`),
+      count,
+      role: ['administrator'],
+    };
+  }).filter(tab => tab !== null); // Remove null entries from the array
+},
     showAssigneeInConversationCard() {
       return (
         this.hasAppliedFiltersOrActiveFolders ||

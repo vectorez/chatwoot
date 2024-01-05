@@ -36,7 +36,7 @@
               size="14"
               class="mt-0.5"
             />
-            <a
+            <!-- <a
               :href="contactProfileLink"
               class="fs-default"
               target="_blank"
@@ -48,7 +48,7 @@
                 variant="clear"
                 color-scheme="secondary"
               />
-            </a>
+            </a> -->
           </div>
         </div>
 
@@ -65,11 +65,11 @@
             show-copy
           />
           <contact-info-row
-            :href="contact.phone_number ? `tel:${contact.phone_number}` : ''"
-            :value="contact.phone_number"
+            href="+157*******"
+            value="+157*******"
             icon="call"
             emoji="📞"
-            :title="$t('CONTACT_PANEL.PHONE_NUMBER')"
+            title="+157*******"
             show-copy
           />
           <contact-info-row
@@ -103,14 +103,14 @@
           size="small"
           @click="toggleConversationModal"
         />
-        <woot-button
+        <!-- <woot-button
           v-tooltip="$t('EDIT_CONTACT.BUTTON_LABEL')"
           title="$t('EDIT_CONTACT.BUTTON_LABEL')"
           icon="edit"
           variant="smooth"
           size="small"
           @click="toggleEditModal"
-        />
+        /> -->
         <woot-button
           v-tooltip="$t('CONTACT_PANEL.MERGE_CONTACT')"
           title="$t('CONTACT_PANEL.MERGE_CONTACT')"
